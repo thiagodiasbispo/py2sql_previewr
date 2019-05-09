@@ -1,0 +1,4 @@
+aenum==2.1.2
+certifi==2019.3.9
+PyPika==0.27.0
+sqlparse==0.3.0
