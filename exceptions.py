@@ -1,3 +1,8 @@
+"""
+    Here we define some helpers exceptions
+"""
+
+
 class QueryObjectNotDefined(Exception):
     def __init__(self):
         super(QueryObjectNotDefined, self).__init__(
