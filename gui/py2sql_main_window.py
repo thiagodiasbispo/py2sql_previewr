@@ -19,8 +19,6 @@ class SqlPreviewWindow(QWidget):
         self.ui = Ui_Py2Sql_base()
         self.ui.setupUi(self)
 
-        self.ui.queryResultTableView
-
         self.sql_preview = None
         self.table_model = None
         self.query_file = None
@@ -114,13 +112,13 @@ class SqlPreviewWindow(QWidget):
         self.ui.sqlPreviewr.clear()
 
         if isinstance(exception, QueryObjectNotDefined):
-            msg = f"Execution error: {exception}"
+            self.update_status_bar(f"Execution error: {exception}")
         elif hasattr(exception, "lineno"):
-            msg = f"{ exception.__class__.__name__} on line {exception.lineno}, offset {exception.offset}."
+            self.update_status_bar(
+                f"{ exception.__class__.__name__} on line {exception.lineno}, offset {exception.offset}."
+            )
         else:
-            msg = f"Compile error: {exception}"
-
-        self.update_status_bar(msg)
+            self.update_status_bar(f"Compile error: {exception}")
 
     def option_live_preview_toggled(self, toggled):
         if toggled:
